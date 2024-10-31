@@ -108,11 +108,11 @@ class Sort {
             }
         }
 
-/*         tipo = "QuickSort";
+        tipo = "QuickSort";
         inicio = Instant.now();
         quickSort(lista, 0, tamanhoLista - 1);
         fim = Instant.now();
-        tempoSort = Duration.between(inicio, fim).toMillis() + "ms"; */
+        tempoSort = Duration.between(inicio, fim).toMillis() + "ms";
 
         printarLista(lista, tamanhoLista, 1);
 
@@ -279,6 +279,12 @@ class Sort {
 
     private static int particao(int[] lista, int esq, int dir) {
         iteracoes++;
+        int meio =  esq + (dir - esq) / 2; 
+        int temp = lista[meio]; 
+        lista[meio] = lista[dir]; // coloca o pivot no meio
+        lista[dir] = temp;
+        trocas++;
+
         int pivot = lista[dir];
         int i = esq - 1;
 
@@ -287,14 +293,14 @@ class Sort {
             if (lista[j] < pivot) { // se o elemento for menor que o pivot, troca os elementos
                 iteracoes++;
                 i++;
-                int temp = lista[i];
+                temp = lista[i];
                 lista[i] = lista[j];// troca os elementos
                 lista[j] = temp;
                 trocas++;
             }
         }
         i++;
-        int temp = lista[i];
+        temp = lista[i];
         lista[i] = lista[dir]; // troca o pivot
         lista[dir] = temp;
         trocas++;
