@@ -72,7 +72,7 @@ plt.gca().yaxis.set_major_formatter(formatter)
 for p in plt.gca().patches:
     height = p.get_height()
     if height > 0:
-        plt.annotate(f'{int(height)}',
+        plt.annotate(f'{height:.1f}',
                         (p.get_x() + p.get_width() / 2., height),
                         ha='center', va='bottom', fontsize=8, color='black',
                         xytext=(0, 5), textcoords='offset points')
